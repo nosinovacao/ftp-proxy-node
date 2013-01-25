@@ -19,7 +19,7 @@ Usage example
 		    'options': {
 		        localhost: '10.100.100.100',
 		        serverData: { host: '127.0.0.1', port: 21 },
-		        logLevel: 10
+		        logLevel: 4
 		    },
 		    'set': function () {
 		        var proxy = new ftpd.ftpProxy(_p.ftpProxy.options);
@@ -28,8 +28,6 @@ Usage example
 			},
 			'onError': function(error) {
 				console.error(error);
-				/* better exit so that someone can restart us */
-				// process.exit(1);
 			}
 		}
 	};
