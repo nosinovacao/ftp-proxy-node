@@ -298,20 +298,4 @@ var parser = (function () {
     };
 })();
 
-//["listen", "close"].forEach(function (fname) {
-//    FtpServer.prototype[fname] = function () {
-//        return this.server[fname].apply(this.server, arguments);
-//    }
-//});
-
-exports.FtpProxy = ftpProxy;
-//function FtpServer(options) {
-//        var self = this;
-//        var sendServerData = function (clientSocket, conn, data){
-//            conn.log(1, "Data sent to client:" + data);
-//            clientSocket.write(data);
-//        };
-//        this.server.on("close", function() {
-//            log(1, "Server closed");
-//        });
-//}
+exports = ftpProxy;
