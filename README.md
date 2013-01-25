@@ -6,7 +6,7 @@ Simple FTP Proxy for node.js. Thanks to (https://github.com/peter-x/ftpmult)
 
 Usage example
 -----------
-
+<code>
 (function(){
 	var ftpd = require('./ftp-proxy-node');
 	var _p = {
@@ -36,3 +36,4 @@ Usage example
 	var self = {};
 	return	_p.init();
 })();
+</code>
