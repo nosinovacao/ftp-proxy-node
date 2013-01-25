@@ -79,8 +79,15 @@ var clientConnection = function (clientSocket, _props) {
             conn.log(logger.levels.info, "Client command:  " + (data + '').trim().toString('utf-8').replace(/^PASS\s+.*/, 'PASS ***'));
 
             if (conn.serverSocket !== null) {
-                if (data.indexOf("MLSD") != -1 || data.indexOf("RETR") != -1) setTimeout(function () { server.write(data); }, 50); //HACK: in case of FTP Filezilla client, without the 50 ms timeout directories list is never loaded
-                else server.write(data);
+                if (passiveConnection.clientConnected == false) {
+                    eventEmitter.on('passiveConnection:clientConnected', passiveClientConnected);
+                    function passiveClientConnected() {
+                        server.write(data);
+                        eventEmitter.removeListener('passiveConnection:clientConnected', passiveClientConnected);
+                    }
+                } else {
+                    server.write(data);
+                }
             } else {
                 var command = parser.parseFTPCommand(data);
                 if (command.cmd !== "USER") {
@@ -199,7 +206,7 @@ var clientConnection = function (clientSocket, _props) {
         'callback': null,
         'serverConnection': null,
         'serverConnected': false,
-        'clientConnected': false,
+        'clientConnected': true,
         'forward': function (host, port, callback) {
             passiveConnection.callback = callback;
             conn.log(logger.levels.info, "Establishing forward for passive connection (" + host + ":" + port + ")");
@@ -222,6 +229,7 @@ var clientConnection = function (clientSocket, _props) {
                 conn.log(logger.levels.debug, "Client connected to forwarder.");
                 passiveConnection.clientConnected = true;
                 passiveConnection.listener.close();
+                eventEmitter.emit('passiveConnection:clientConnected');
 
                 lsocket.on('error', function (err) {
                     conn.log(logger.levels.error, "Passive forwarding error: " + err, conn);
@@ -298,4 +306,33 @@ var parser = (function () {
     };
 })();
 
-exports = ftpProxy;
+var eventEmitter = (function () {
+    var self = {
+        'callbacks': {},
+        'emit': function (event_name, data) {
+            if (!self.callbacks[event_name])
+                return;
+            for (var i = 0; i < self.callbacks[event_name].length; i++) {
+                self.callbacks[event_name][i](data)
+            }
+        },
+        'on': function (event_name, callback) {
+            if ('function' != typeof (callback))
+                return;
+            if (!self.callbacks[event_name])
+                self.callbacks[event_name] = [];
+            self.callbacks[event_name].push(callback)
+        },
+        'removeListener': function (event_name, callback) {
+            if (self.callbacks && self.callbacks[event_name]) {
+                for (var i = 0; i < self.callbacks[event_name].length; i++) {
+                    if (self.callbacks[event_name][i] == callback)
+                        self.callbacks[event_name].splice(i, 1)
+                }
+            }
+        }
+    };
+    return self;
+})();
+
+exports.ftpProxy = ftpProxy;
