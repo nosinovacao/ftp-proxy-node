@@ -17,13 +17,13 @@ Usage example
 		},
 		'ftpProxy': {
 		    'options': {
-		        localhost: '127.0.0.1', //proxy IP
+		        localhost: '127.0.0.1', //FTP Proxy IP
 		        serverData: { host: '127.0.0.1', port: 21 }, //FTP Server IP
 		        logLevel: 4
 		    },
 		    'set': function () {
 		        var proxy = new ftpd.ftpProxy(_p.ftpProxy.options);
-				proxy.listen(41823);
+				proxy.listen(21); //FTP Proxy Port
 				proxy.on("error", _p.ftpProxy.onError);
 			},
 			'onError': function(error) {
