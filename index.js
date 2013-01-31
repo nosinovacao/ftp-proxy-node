@@ -76,8 +76,8 @@ var clientConnection = function (clientSocket, _props) {
         },
         'onData': function (data) {
             // Don't want to include passwords in logs.
-            conn.log(logger.levels.info, "Client command:  " + (data + '').trim().toString('utf-8').replace(/^PASS\s+.*/, 'PASS ***'));
-
+            conn.log(logger.levels.info, "Client command: " + (data + '').trim().toString('utf-8').replace(/^PASS\s+.*/, 'PASS ***'));
+            
             if (conn.serverSocket !== null) {
                 if (passiveConnection.clientConnected == false) {
                     eventEmitter.on('passiveConnection:clientConnected', passiveClientConnected);
@@ -111,7 +111,7 @@ var clientConnection = function (clientSocket, _props) {
             conn.clientSocket.close();
         },
         'write': function (data) {
-            conn.log(logger.levels.debug, "Data sent to client: " + data);
+            conn.log(logger.levels.debug, "Data sent to client: " + data.replace('\n', ''));
             conn.clientSocket.write(data);
         }
     };
@@ -195,7 +195,7 @@ var clientConnection = function (clientSocket, _props) {
             }
         },
         'write': function (data) {
-            conn.log(logger.levels.debug, "Data sent to server: " + data);
+            conn.log(logger.levels.debug, "Data sent to server: " + (data + '').trim().toString('utf-8').replace(/^PASS\s+.*/, 'PASS ***').replace('\n', ''));
             conn.serverSocket.write(data);
         }
     };
@@ -281,7 +281,7 @@ var loggingModule = function (options) {
                 var dateStr = now.getFullYear() + "-" + (1 + now.getMonth()) + "-" + now.getDate() + " " +
                               now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
                 var msg = dateStr + " " + message;
-                switch (logger.reportLevel) {
+                switch (level) {
                     case logger.levels.error: console.error(msg); break;
                     case logger.levels.warning: console.warn(msg); break;
                     case logger.levels.info: console.info(msg); break;

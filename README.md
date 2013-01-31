@@ -17,8 +17,8 @@ Usage example
 		},
 		'ftpProxy': {
 		    'options': {
-		        localhost: '10.100.100.100',
-		        serverData: { host: '127.0.0.1', port: 21 },
+		        localhost: '127.0.0.1', //proxy IP
+		        serverData: { host: '127.0.0.1', port: 21 }, //FTP Server IP
 		        logLevel: 4
 		    },
 		    'set': function () {
