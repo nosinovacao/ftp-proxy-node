@@ -28,8 +28,6 @@ Usage example
 			},
 			'onError': function(error) {
 				console.error(error);
-				/* better exit so that someone can restart us */
-				// process.exit(1);
 			}
 		}
 	};
