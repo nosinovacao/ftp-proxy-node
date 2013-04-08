@@ -1,14 +1,14 @@
 {
   "name": "ftp-proxy-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./index.js",
   "author": "DropZone",
-  "description": "simple node ftp proxy",
+  "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin",
   "contributors": [
-	{
-		"name": "Duarte Madueño",
-		"email": "duarte.madueno@gmail.com"
-	}
+  	{
+  		"name": "Duarte Madueño",
+  		"email": "duarte.madueno@gmail.com"
+  	}
   ],
   "repository": {
     "type": "git",
@@ -18,5 +18,7 @@
     "ftp",
     "proxy"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "node-logger": "https://github.com/DropZone/node-simple-logger"
+  }
 }
