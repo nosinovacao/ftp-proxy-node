@@ -7,6 +7,9 @@ Stats plugin already has a solution for using rabbitMQ as stats' message publish
 
 For more details, go to our [Wiki page](https://github.com/DropZone/ftp-proxy-node/wiki)
 
+```javascript
+$ npm install ftp-proxy
+```
 
 Usage example
 -----------
