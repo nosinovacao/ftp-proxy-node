@@ -5,6 +5,7 @@
   "author": {
     "name": "DropZone"
   },
+  "preferGlobal": true,
   "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin",
   "contributors": [
   	{
@@ -30,5 +31,8 @@
       "url": "http://github.com/DropZone/ftp-proxy-node/raw/master/LICENSE-MIT"
     }
   ],
+  "dependencies": {
+    "node-logger": "https://github.com/DropZone/node-simple-logger.git"
+  },
   "readmeFilename": "README.md"
 }
