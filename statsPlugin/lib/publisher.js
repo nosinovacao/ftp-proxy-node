@@ -8,7 +8,7 @@ module.exports = exports = function(projectEventEmitter, logger, clientManager, 
 			_p.MP.init();
 			return self;
 		},
-		'MP': new require('./messagePublisher')(mpConfig, projectEventEmitter, logger)
+		'MP': new require('../messagePublisher')(mpConfig, projectEventEmitter, logger)
 	};
 
 	var self = {

@@ -1,5 +1,5 @@
 var net = require('net');
-var loggingModule = require('node-logger');
+var loggingModule = require('node-drop-logger');
 var clientConnection = require('./clientConnection');
 
 var ftpProxy = function (options) {
