@@ -2,8 +2,11 @@
   "name": "ftp-proxy",
   "version": "0.1.0",
   "main": "./index.js",
-  "author": "DropZone",
-  "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin",
+  "author": {
+    "name": "DropZone",
+    "url": "https://github.com/DropZone"
+  },
+  "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin and logging module",
   "contributors": [
   	{
   		"name": "Duarte Madueño",
@@ -29,7 +32,8 @@
     }
   ],
   "dependencies": {
-    "node-logger": "https://github.com/DropZone/node-simple-logger.git"
+    "node-logger": "https://github.com/DropZone/node-simple-logger.git",
+    "amqp": "0.1.4"
   },
   "readmeFilename": "README.md"
 }

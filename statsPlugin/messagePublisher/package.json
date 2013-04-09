@@ -1,13 +1,10 @@
 {
   "main": "./rabbitMQ.js",
-  "author": "DropZone",
+  "author": { "name": "DropZone"},
   "contributors": [
   	{
   		"name": "Duarte Madueño",
   		"email": "duarte.madueno@gmail.com"
   	}
-  ],
-  "dependencies": {
-    "amqp": "0.1.4"
-  }
+  ]
 }
