@@ -2,7 +2,9 @@
   "name": "ftp-proxy-node",
   "version": "0.1.0",
   "main": "./index.js",
-  "author": "DropZone",
+  "author": {
+    "name": "DropZone"
+  },
   "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin",
   "contributors": [
   	{
@@ -12,13 +14,24 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DropZone/ftp-proxy-node.git"
+    "url": "git://github.com/DropZone/ftp-proxy-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DropZone/ftp-proxy-node/issues"
   },
   "keywords": [
     "ftp",
-    "proxy"
+    "proxy",
+    "node"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/postwait/node-amqp/raw/master/LICENSE-MIT"
+    }
   ],
   "dependencies": {
     "node-logger": "https://github.com/DropZone/node-simple-logger"
-  }
+  },
+  "readmeFilename": "README.md"
 }

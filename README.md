@@ -1,7 +1,7 @@
 NodeJS FTP Proxy
 ==============
 
-NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin.
+NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin and logging module.
 
 Stats plugin already has a solution for using rabbitMQ as stats' message publisher.
 
