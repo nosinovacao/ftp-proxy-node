@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/DropZone/ftp-proxy-node.git"
+    "url": "https://github.com/DropZone/ftp-proxy-node.git"
   },
   "bugs": {
     "url": "https://github.com/DropZone/ftp-proxy-node/issues"
@@ -30,8 +30,5 @@
       "url": "http://github.com/DropZone/ftp-proxy-node/raw/master/LICENSE-MIT"
     }
   ],
-  "dependencies": {
-    "node-logger": "https://github.com/DropZone/node-simple-logger"
-  },
   "readmeFilename": "README.md"
 }
