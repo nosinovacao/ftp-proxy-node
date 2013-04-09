@@ -15,7 +15,7 @@ Usage example
 -----------
 ```javascript
 (function(){
-	var ftpd = require('ftp-proxy-node');
+	var ftpd = require('ftp-proxy');
 	var _config = require('./config');
 	var _p = {
 		'server': null,
