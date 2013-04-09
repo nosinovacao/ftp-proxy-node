@@ -32,7 +32,7 @@
     }
   ],
   "dependencies": {
-    "node-logger": "https://github.com/DropZone/node-simple-logger.git",
+    "node-drop-logger": "0.0.3",
     "amqp": "0.1.4"
   },
   "readmeFilename": "README.md"
