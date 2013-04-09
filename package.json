@@ -1,11 +1,8 @@
 {
-  "name": "ftp-proxy-node",
+  "name": "ftp-proxy",
   "version": "0.1.0",
   "main": "./index.js",
-  "author": {
-    "name": "DropZone"
-  },
-  "preferGlobal": true,
+  "author": "DropZone",
   "description": "NodeJS ftp proxy prepared for active and passive connections with transfer stats plugin",
   "contributors": [
   	{
