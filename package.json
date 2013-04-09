@@ -27,7 +27,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/postwait/node-amqp/raw/master/LICENSE-MIT"
+      "url": "http://github.com/DropZone/ftp-proxy-node/raw/master/LICENSE-MIT"
     }
   ],
   "dependencies": {
