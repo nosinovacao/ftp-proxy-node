@@ -12,6 +12,9 @@ module.exports = exports = function(mqConfig, projectEventEmitter, logger){
 			logger.info('STATS PLUGIN - RabbitMQ - ready');
 			_p.publishers[_p.exchange.Name] = _p.connection.exchange(_p.exchange.name, _p.exchange.options, _p.publisherConnected);
 		},
+		'connectionError': function(err) {
+			logger.error('STATS PLUGIN - RabbitMQ - ' + err);
+		},
 		'publisherConnected': function() {
 			logger.info('STATS PLUGIN - RabbitMQ - Publisher connected');
 			projectEventEmitter.emit('MP:PublisherConnected');
@@ -21,6 +24,7 @@ module.exports = exports = function(mqConfig, projectEventEmitter, logger){
 		'init': function() {
 			_p.connection = amqp.createConnection({ url: mqConfig.connectionString });
 			_p.connection.addListener('ready', _p.connectionReady);
+			_p.connection.addListener('error', _p.connectionError);
 		},
 		'write': function(exchangeName, routingKey, data) {
 			var RK = _p.RK[routingKey];

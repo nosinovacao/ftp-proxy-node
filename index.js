@@ -18,12 +18,20 @@ var ftpProxy = function (options) {
 
     var _p = {
         'init': function () {
-            _p.server.setBindings();
             logger = new loggingModule(options.logging);
-            if (options.statsPlugin.usePlugin) {
-                projectEventEmitter = new Events();
-                statsPlugin = new require('./statsPlugin')(projectEventEmitter, logger, options);
-            }
+			try
+			{
+				_p.server.setBindings();
+				if (options.statsPlugin.usePlugin) {
+					projectEventEmitter = new Events();
+					statsPlugin = new require('./statsPlugin')(projectEventEmitter, logger, options);
+				}
+			}
+			catch(e)
+			{
+				logger.error("Server error: " + e.message);
+				console.error(e);
+			}
             return self;
         },
         'server': {

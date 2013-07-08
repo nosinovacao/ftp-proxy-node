@@ -81,10 +81,13 @@ var serverHandler = function (conn, serverData, eventEmitter, useStatsPlugin){
 				}
         		eventEmitter.emit('serverHandler:filseSize', parseFloat(command.arg));
 	        }
-	        else if (!(command.cmd == "200" && data.indexOf("PORT") != -1)) {
-	            /* suppress "200 PORT command successful"-message. This message is sent from this proxy and shouldn't be forwarded to user. If so, user's connection will be closed because of protocol corruption */
-	        	client.write(data);
-	        }
+	        else if (command.cmd == "200" && data.indexOf("PORT") != -1) {
+				//suppress 200 port command successfull because command already sent and emit success event
+                eventEmitter.emit('serverHandler:200PORT', '');
+			}
+			else{
+				client.write(data); 
+			}
 	    },
 	    'write': function (data) {
 	        conn.log('INFO', "Data sent to server: " + (data + '').trim().toString('utf-8').replace(/^PASS\s+.*/, 'PASS ***').replace('\n', '').replace('\r', ''));

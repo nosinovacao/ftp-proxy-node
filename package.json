@@ -1,6 +1,6 @@
 {
   "name": "ftp-proxy",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "main": "./index.js",
   "author": {
     "name": "DropZone",
@@ -32,7 +32,7 @@
     }
   ],
   "dependencies": {
-    "node-drop-logger": "0.0.3",
+    "node-drop-logger": "1.0.0",
     "amqp": "0.1.4"
   },
   "readmeFilename": "README.md"
